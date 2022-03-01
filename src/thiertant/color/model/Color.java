@@ -33,15 +33,49 @@ public class Color {
     }
 
     public Color(String hexadecimalString){
-        this.hexValue = hexadecimalString;
+        if (checkHex(hexadecimalString)){
+            this.hexValue = hexadecimalString;
+        }
+        else {
+            throw new IllegalArgumentException("Hexadecimal string format is not valid");
+        }
+    }
+
+    public static boolean checkHex(String s)
+    {
+        //check #
+        String firstChar = s.substring(0,1);
+        if (!firstChar.equals("#")){
+            return false;
+        } else {
+            int n = s.length();
+            if (s.length() != 7)
+            {
+                return false;
+            }
+            // on démarre à 1 pour ne plus vérifier le #
+                for (int i = 1; i < n; i++) {
+                    char ch = s.charAt(i);
+                    if ((ch < '0' || ch > '9')
+                            && (ch < 'A' || ch > 'F')) {
+                        return false;
+                    }
+                }
+            return true;
+        }
     }
 
     public int getRed(){
         return this.red;
     }
 
-    public void setRed(int red){
-        this.red = red;
+    public void setRed(int red) {
+        if (red >= 0 && red < 255) {
+            this.red = red;
+        }
+        else {
+            throw new IllegalArgumentException("Red color is not valid");
+        }
     }
 
     public int getGreen(){
@@ -49,7 +83,12 @@ public class Color {
     }
 
     public void setGreen(int green){
-        this.green = green;
+        if (green >= 0 && green < 255) {
+            this.green = green;
+        }
+        else {
+            throw new IllegalArgumentException("Red color is not valid");
+        }
     }
 
     public int getBlue(){
@@ -57,7 +96,12 @@ public class Color {
     }
 
     public void setBlue(int blue){
-        this.blue = blue;
+        if (blue >= 0 && blue < 255) {
+            this.blue = blue;
+        }
+        else {
+            throw new IllegalArgumentException("Red color is not valid");
+        }
     }
 
     public String getHexValue(){
