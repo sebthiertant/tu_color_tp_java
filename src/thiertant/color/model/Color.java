@@ -29,7 +29,6 @@ public class Color {
         else {
             throw new IllegalArgumentException("Blue color is not valid");
         }
-
     }
 
     public Color(String hexadecimalString){
@@ -78,7 +77,7 @@ public class Color {
         }
     }
 
-    public int getGreen(){
+    public int getGreen() {
         return this.green;
     }
 
@@ -112,4 +111,9 @@ public class Color {
         this.hexValue = hexValue;
     }
 
+    @Override
+    public String toString() {
+        // Je dois retourner [value=#D58D35, r=213, g=141, b=53]
+        return this.getHexValue();
+    }
 }
