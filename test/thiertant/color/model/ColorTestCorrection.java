@@ -4,6 +4,7 @@ package thiertant.color.model;
         import org.junit.jupiter.api.BeforeEach;
         import org.junit.jupiter.api.Test;
         import static org.junit.jupiter.api.Assertions.*;
+
 class ColorTestCorrection {
     // [value=#D58D35, r=213, g=141, b=53]
     private Color color;
@@ -58,10 +59,10 @@ class ColorTestCorrection {
     public void test_constructor_HexValue() {
         color = new Color("#D58D35");
         assertAll("Color object non conformes",
+                ()-> assertEquals("#D58D35", color.getHexValue(), "getHexValue() est incorrect"),
                 ()-> assertEquals(213, color.getRed(),"getRed() est incorrect"),
                 ()-> assertEquals(141, color.getGreen(),"getGreen() est incorrect"),
-                ()-> assertEquals(53, color.getBlue(), "getBlue() est incorrect"),
-                ()-> assertEquals("#D58D35", color.getHexValue(), "getHexValue() est incorrect"));
+                ()-> assertEquals(53, color.getBlue(), "getBlue() est incorrect"));
     }
     @Test
     public void test_constructor_HexValue_with_null_value_Exception() {
